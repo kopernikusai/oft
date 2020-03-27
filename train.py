@@ -192,7 +192,7 @@ def parse_args():
                         default=[.25, .5, .25],
                         help='magn. of random noise applied to grid coords')
     parser.add_argument('--train-image-size', type=int, nargs=2, 
-                        default=(1080, 360),
+                        default=(600, 360),
                         help='size of random image crops during training')
     parser.add_argument('--yoffset', type=float, default=1.74,
                         help='vertical offset of the grid from the camera axis')

@@ -34,9 +34,12 @@ def draw_bbox3d(obj, calib, ax, color='b'):
 
     # Get corners of 3D bounding box
     corners = utils.bbox_corners(obj)
-
+    corners = corners.cuda()
+    print("üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü")
+    print(calib.type())
+    print(corners.type())
     # Project into image coordinates
-    img_corners = utils.perspective(calib, corners).numpy()
+    img_corners = utils.perspective(calib, corners).cpu().numpy()
 
     # Draw polygons
     # Front face
@@ -47,7 +50,8 @@ def draw_bbox3d(obj, calib, ax, color='b'):
     ax.add_line(Line2D(*img_corners[[2, 3]].T, c=color))        # Lower right
     ax.add_line(Line2D(*img_corners[[4, 5]].T, c=color))        # Upper left
     ax.add_line(Line2D(*img_corners[[6, 7]].T, c=color))        # Upper right
-
+    
+    #return ax
 
 def visualize_objects(image, calib, objects, cmap='tab20', ax=None):
 
@@ -57,7 +61,9 @@ def visualize_objects(image, calib, objects, cmap='tab20', ax=None):
     ax.clear()
 
     # Visualize image
-    ax.imshow(image.permute(1, 2, 0).numpy())
+    xyz=image.cpu().permute(1,2,0).numpy()
+    #ax.imshow(image.permute(1, 2, 0).numpy())
+    ax.imshow(xyz)
     extents = ax.axis()
 
     # Visualize objects
