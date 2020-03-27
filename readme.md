@@ -1,6 +1,6 @@
 # Orthographic Feature Transform for Monocular 3D Object Detection
 
-Note: Please use the dev branch for inference and training as the master branch(cloned from original repo) is incomplete. #
+Note: Please use the dev branch for inference and training as the master branch(cloned from original repo) is incomplete.
 
 ## Training
 The training script can be run by calling `train.py` with the name of the experiment as a required position argument. 
